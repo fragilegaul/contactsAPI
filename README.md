@@ -25,3 +25,7 @@ Find a contact by its id
 Delete a contact (wrong id)
 
 ![6](https://github.com/user-attachments/assets/7d4ad99e-01c8-4e0a-bda5-dc5e36670d9d)
+
+Documented with the help of OpenAPI
+![7](https://github.com/user-attachments/assets/adb5d6b8-475a-4587-a89a-32ba11330224) 
+![8](https://github.com/user-attachments/assets/d21d3097-7313-4d08-a0f9-cced8543071f) ![9](https://github.com/user-attachments/assets/da135bc5-4e75-46fd-87bc-b8a29727e4fa)
