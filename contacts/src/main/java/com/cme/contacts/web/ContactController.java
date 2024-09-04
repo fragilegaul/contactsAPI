@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,12 +49,23 @@ public class ContactController {
 
     @Operation(summary = "Create Contact", description = "Creates a contact from the provided payload")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Successful creation of contact"),
+        @ApiResponse(responseCode = "201", description = "You created a contact"),
         @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful update", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
      })
     @PostMapping(value = "/contact", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> createContact(@Valid @RequestBody Contact contact) {
         contactService.saveContact(contact);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Delete Contact", description = "Deletes a contact by the provided id")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "You deleted a contact"),
+        @ApiResponse(responseCode = "404", description = "Bad request: a contact doesn't exist", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+     })
+    @DeleteMapping("/contact/{id}")
+    public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) {
+        contactService.deleteContact(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -2,9 +2,7 @@ package com.cme.contacts.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
-
 import com.cme.contacts.pojo.Contact;
 
 @Repository
@@ -22,5 +20,9 @@ public class ContactRepository {
 
     public void saveContact(Contact contact) {
         contacts.add(contact);
+    }
+    
+    public void deleteContact(int index) {
+        contacts.remove(index);
     }
 }
